@@ -19,46 +19,73 @@ namespace atlas::game::nim {
 
     private:
         void playRound() {
-            humanturn();
+            playSingleTurn();
             computerturn();
         }
-        void humanturn() {
-            int turn;
-            while(true) {
-                std::cout << "Es gibt " << stones << " Steine. Bitte nehmen Sie 1,2 oder 3!" << std::endl;
-                std::cin >> turn;
-                if(turn >= 1 && turn <= 3) break;
-                std::cout << "Ungueltiger Zug" << std::endl;
-            }
-            stones -= turn;
+
+        void playSingleTurn() {
+            if(isGameOver()) return;
+            executePlayersTurn();
+            terminateTurn( "Mensch");
         }
+
+
+
+        void executePlayersTurn()  {
+
+            do {
+                humanturnToDelete();
+            } while(turnIsNotValid());
+        }
+
+        bool turnIsNotValid() {
+            if(isTurnValid()) return false;
+            std::cout << "Ungueltiger Zug" << std::endl;
+            return true;
+        }
+
+
+        void humanturnToDelete()  {
+            std::cout << "Es gibt " << stones << " Steine. Bitte nehmen Sie 1,2 oder 3!" << std::endl;
+            std::cin >> turn;
+        }
+
 
         void computerturn() {
 
+            if(isGameOver()) return;
+
             constexpr int turns[] = {3,1,1,2};
-            if(isGameOver()) {
-                std::cout << "Du Loser" << std::endl;
-                return;
-            }
 
-            if(stones == 1) {
-                --stones;
-                std::cout << "Du hast nur Glueck gehabt" << std::endl;
-                return ;
-            }
-
-            const int turn = turns[stones%4];
+            turn = turns[stones%4];
             std::cout << "Computer nimmt " << turn << " Steine." << std::endl;
-            stones -= turn;
+            terminateTurn( "Computer");
 
         }
+
+        void terminateTurn( std::string player) {// Integration
+            updateBoard();
+            printMessageIfGameIsOver(player);
+        }
+
+        void printMessageIfGameIsOver(const std::string &player) { // Operation
+            if(isGameOver()) {
+                std::cout << player << " hat verloren" << std::endl;
+            }
+        }
+
+
+        // Implementierungssumpf ---------------------------------------------------------
+
+        void updateBoard() { stones -= turn; }
 
         bool isGameOver() {
             return stones < 1;
         }
+        bool isTurnValid() const { return turn >= 1 && turn <= 3; }
 
         int stones;
-
+        int turn;
     };
 
 
