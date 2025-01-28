@@ -7,4 +7,10 @@ add_executable(NimSpielProjekt main.cpp
         game/Game.h
         client/GameClient.h
         game/nim/NimGameImpl.h
+        game/nim/player/AbstractNimGamePlayer.h
+        game/nim/player/HumanPlayer.h
+        io/Writer.h
+        io/ConsoleWriter.h
+        game/player/Player.h
+        game/AbstractGame.h
 )

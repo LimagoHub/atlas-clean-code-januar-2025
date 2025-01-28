@@ -1,11 +1,8 @@
 # ninja log v6
-38	796	7596854920565716	CMakeFiles/NimSpielProjekt.dir/main.cpp.obj	854029aa2875faa1
-800	2045	7596854928193682	NimSpielProjekt.exe	b97372dda707d11e
-25	696	7596863619738385	CMakeFiles/NimSpielProjekt.dir/main.cpp.obj	854029aa2875faa1
-697	2352	7596863626459382	NimSpielProjekt.exe	b97372dda707d11e
-28	660	7596866664041364	CMakeFiles/NimSpielProjekt.dir/main.cpp.obj	854029aa2875faa1
-661	2836	7596866670368071	NimSpielProjekt.exe	b97372dda707d11e
-7	715	7596918363737544	CMakeFiles/NimSpielProjekt.dir/main.cpp.obj	854029aa2875faa1
-716	2022	7596918370816393	NimSpielProjekt.exe	b97372dda707d11e
-6	670	7596918510977210	CMakeFiles/NimSpielProjekt.dir/main.cpp.obj	854029aa2875faa1
-679	2303	7596918517703714	NimSpielProjekt.exe	b97372dda707d11e
+26	914	7597581258033753	CMakeFiles/NimSpielProjekt.dir/main.cpp.obj	854029aa2875faa1
+915	2392	7597581266919915	NimSpielProjekt.exe	b97372dda707d11e
+22	682	7597595837326033	CMakeFiles/NimSpielProjekt.dir/main.cpp.obj	854029aa2875faa1
+684	2581	7597595843943973	NimSpielProjekt.exe	b97372dda707d11e
+20	44	7597619788283010	clean	960b6431fa55ecc1
+29	1068	7597620577196724	CMakeFiles/NimSpielProjekt.dir/main.cpp.obj	854029aa2875faa1
+1069	2389	7597620587604030	NimSpielProjekt.exe	b97372dda707d11e
