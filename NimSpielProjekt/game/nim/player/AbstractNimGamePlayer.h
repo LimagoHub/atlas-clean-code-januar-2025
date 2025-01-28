@@ -8,7 +8,7 @@ namespace atlas::game::nim::player {
 
     class AbstractNimGamePlayer: public  atlas::game::player::AbstractPlayer<int, int>{
     public:
-        AbstractNimGamePlayer(const std::string &name) : AbstractPlayer(name){}
+        explicit AbstractNimGamePlayer(const std::string &name) : AbstractPlayer(name){}
 
 
 

@@ -15,7 +15,7 @@ namespace atlas::game::nim::player  {
 
 
 
-    public:
+
         int doTurn(const int &stones) const override {
             int result;
             std::cout << "Es gibt " << stones << " Steine. Bitte nehmen Sie 1,2 oder 3!" << std::endl;

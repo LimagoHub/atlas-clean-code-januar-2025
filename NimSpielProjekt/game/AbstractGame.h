@@ -16,6 +16,8 @@ namespace atlas::game {
     class AbstractGame: public Game {
         using Player = atlas::game::player::Player<BOARD, TURN>*;
         using Players = std::vector<Player>;
+
+
     public:
 
         explicit AbstractGame(io::Writer &writer) : writer(writer) {}
@@ -24,8 +26,13 @@ namespace atlas::game {
             players.push_back(player);
         }
         void removePlayer(Player player) {
+
+            // TODO Implement later
             throw std::logic_error("Not implemented yet");
         }
+        /**
+         *
+         */
         void play() override {
             while( ! isGameOver()) {
 
@@ -51,7 +58,7 @@ namespace atlas::game {
         void executePlayersTurn()  {
 
             do {
-                turn =getCurrentPlayer()->doTurn(board);
+                _turn =getCurrentPlayer()->doTurn(_board);
             } while(turnIsNotValid());
         }
 
@@ -75,15 +82,15 @@ namespace atlas::game {
         }
 
         void setCurrentPlayer(Player currentPlayer) {
-            AbstractGame::currentPlayer = currentPlayer;
+            AbstractGame::_currentPlayer = currentPlayer;
         }
 
         io::Writer &writer;
 
         Players players;
-        Player currentPlayer;
-        BOARD board;
-        TURN turn;
+        Player _currentPlayer;
+        BOARD _board;
+        TURN _turn;
 
 
 
@@ -92,19 +99,20 @@ namespace atlas::game {
 
 
         BOARD getBoard() const {
-            return board;
+            return _board;
         }
 
         void setBoard(BOARD board) {
-            AbstractGame::board = board;
+            AbstractGame::_board = board;
         }
 
         TURN getTurn() const {
-            return turn;
+            return _turn;
         }
 
+        [[maybe_unused]]
         void setTurn(TURN turn) {
-            AbstractGame::turn = turn;
+            AbstractGame::_turn = turn;
         }
 
 
@@ -115,12 +123,12 @@ namespace atlas::game {
 
 
 
-        void write(std::string message) {
+        void write(const std::string &message) {
             writer.write(message);
         }
         [[nodiscard]]
         Player getCurrentPlayer() const {
-            return currentPlayer;
+            return _currentPlayer;
         }
         [[nodiscard]]
         virtual bool isGameOver() const = 0;

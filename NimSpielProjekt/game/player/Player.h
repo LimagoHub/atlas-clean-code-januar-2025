@@ -13,9 +13,10 @@ namespace atlas::game::player {
     public:
         virtual ~Player() = default;
 
+        [[nodiscard]]
         virtual std::string getName()  = 0;
 
-
+        [[nodiscard]]
         virtual TURN doTurn(const BOARD &board) const= 0;
     };
 

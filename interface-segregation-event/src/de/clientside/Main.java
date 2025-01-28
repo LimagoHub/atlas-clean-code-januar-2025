@@ -32,6 +32,13 @@ public class Main {
 
 		@Override
 		public void pigTooFat(final Schwein dickesSchwein) {
+
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+				Thread.currentThread().interrupt();
+			}
 			metzger.schlachten(dickesSchwein);
 		}
 	}
