@@ -1,0 +1,3 @@
+C:/Users/JoachimWagner/Documents/git/Atlas/cleancode/atlas-clean-code-januar-2025/Decorator/cmake-build-debug/CMakeFiles/Decorator.dir
+C:/Users/JoachimWagner/Documents/git/Atlas/cleancode/atlas-clean-code-januar-2025/Decorator/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/JoachimWagner/Documents/git/Atlas/cleancode/atlas-clean-code-januar-2025/Decorator/cmake-build-debug/CMakeFiles/rebuild_cache.dir

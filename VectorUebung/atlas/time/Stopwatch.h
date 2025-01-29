@@ -14,7 +14,7 @@ namespace atlas::time {
 
         virtual void start() noexcept = 0;
         virtual void stop()  noexcept = 0;
-        [[nodiscard()]]
+        [[nodiscard]]
         virtual std::chrono::milliseconds getDurationToMilliseconds() const noexcept = 0;
     };
 
