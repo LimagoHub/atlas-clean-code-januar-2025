@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/JoachimWagner/Documents/git/Atlas/cleancode/atlas-clean-code-januar-2025/VectorFiller/cmake-build-debug"
+			"value" : "c:/Users/JoachimWagner/Documents/git/Atlas/cleancode/atlas-clean-code-januar-2025/VectorUebung/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -575,7 +575,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/JoachimWagner/Documents/git/Atlas/cleancode/atlas-clean-code-januar-2025/VectorFiller/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/JoachimWagner/Documents/git/Atlas/cleancode/atlas-clean-code-januar-2025/VectorUebung/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -647,7 +647,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/JoachimWagner/Documents/git/Atlas/cleancode/atlas-clean-code-januar-2025/VectorFiller"
+			"value" : "C:/Users/JoachimWagner/Documents/git/Atlas/cleancode/atlas-clean-code-januar-2025/VectorUebung"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -659,7 +659,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Program Files (x86)/VectorFiller"
+			"value" : "C:/Program Files (x86)/VectorUebung"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -687,7 +687,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/PROGRA~1/JETBRA~1/CLION2~1.1/bin/ninja/win/x64/ninja.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2024.1/bin/ninja/win/x64/ninja.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -875,7 +875,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "VectorFiller"
+			"value" : "VectorUebung"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1270,7 +1270,7 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "VectorFiller_BINARY_DIR",
+			"name" : "VectorUebung_BINARY_DIR",
 			"properties" : 
 			[
 				{
@@ -1279,10 +1279,10 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/JoachimWagner/Documents/git/Atlas/cleancode/atlas-clean-code-januar-2025/VectorFiller/cmake-build-debug"
+			"value" : "C:/Users/JoachimWagner/Documents/git/Atlas/cleancode/atlas-clean-code-januar-2025/VectorUebung/cmake-build-debug"
 		},
 		{
-			"name" : "VectorFiller_IS_TOP_LEVEL",
+			"name" : "VectorUebung_IS_TOP_LEVEL",
 			"properties" : 
 			[
 				{
@@ -1294,7 +1294,7 @@
 			"value" : "ON"
 		},
 		{
-			"name" : "VectorFiller_SOURCE_DIR",
+			"name" : "VectorUebung_SOURCE_DIR",
 			"properties" : 
 			[
 				{
@@ -1303,7 +1303,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/JoachimWagner/Documents/git/Atlas/cleancode/atlas-clean-code-januar-2025/VectorFiller"
+			"value" : "C:/Users/JoachimWagner/Documents/git/Atlas/cleancode/atlas-clean-code-januar-2025/VectorUebung"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
