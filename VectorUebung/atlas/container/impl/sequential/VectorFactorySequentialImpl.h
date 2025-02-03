@@ -11,7 +11,7 @@ namespace atlas::container {
 
     template<class T>
     class VectorFactorySequentialImpl : public AbstractVectorFactory<T>{
-        using VECTOR = std::unique_ptr<std::vector<T> >;
+        using VECTOR = std::shared_ptr<std::vector<T> >;
         using MyGenerator =  std::unique_ptr<generator::Generator<T>>;
         MyGenerator generator_;
 

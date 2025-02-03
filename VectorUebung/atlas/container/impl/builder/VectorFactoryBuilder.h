@@ -6,6 +6,7 @@
 #include <iostream>
 #include "../../VectorFactory.h"
 #include "../sequential/VectorFactorySequentialImpl.h"
+#include "../parallel/VectorFactoryParallelImpl.h"
 #include "../decorators/VectorFactoryBenchmarkDecorator.h"
 #include "../decorators/VectorFactoryLoggerDecorator.h"
 #include "../decorators/VectorFactorySecureDecorator.h"
@@ -18,20 +19,31 @@ namespace atlas::container {
 
         using VECTOR_FACTORY = std::unique_ptr<atlas::container::VectorFactory<int>>;
         using VECTOR_FACTORY_SEQUENCIAL = atlas::container::VectorFactorySequentialImpl<int>;
+        using VECTOR_FACTORY_PARALLEL = atlas::container::VectorFactoryParallelImpl<int>;
 
         using VECTOR_FACTORY_BENCHMARK = atlas::container::VectorFactoryBenchmarkDecorator<int>;
         using VECTOR_FACTORY_LOGGER = atlas::container::VectorFactoryLoggerDecorator<int>;
         using VECTOR_FACTORY_SECURE = atlas::container::VectorFactorySecureDecorator<int>;
 
         using STOPWATCH = std::unique_ptr<atlas::time::Stopwatch>;
-        using GENERATOR = std::unique_ptr<atlas::generator::Generator<T>>;
+        using GENERATOR_BUILDER = std::unique_ptr<atlas::generator::GeneratorBuilder<T>>;
 
         inline static bool benchmark{false};
         inline static bool logger{false};
         inline static bool secure{false};
+        inline static size_t threadCount{1};
 
 
     public:
+
+        static size_t getThreadCount() {
+            return threadCount;
+        }
+
+        static void setThreadCount(size_t threadCount) {
+            VectorFactoryBuilder::threadCount = threadCount;
+        }
+
 
         static bool isLogger() {
             return logger;
@@ -58,10 +70,13 @@ namespace atlas::container {
         }
 
 
-        static VECTOR_FACTORY createWithGenerator(GENERATOR generator) {
+        static VECTOR_FACTORY createWithGeneratorBuilder(GENERATOR_BUILDER generatorBuilder) {
             VECTOR_FACTORY result;
             STOPWATCH watch = std::make_unique<atlas::time::StopwatchImpl>();
-            result = std::make_unique<VECTOR_FACTORY_SEQUENCIAL>(std::move(generator));
+            if(threadCount==1)
+                result = std::make_unique<VECTOR_FACTORY_SEQUENCIAL>(std::move(generatorBuilder->create()));
+            else
+                result = std::make_unique<VECTOR_FACTORY_PARALLEL>(std::move(generatorBuilder), threadCount);
 
             if(logger) result = std::make_unique<VECTOR_FACTORY_LOGGER >(std::move(result));
             if(secure) result = std::make_unique<VECTOR_FACTORY_SECURE >(std::move(result));

@@ -8,7 +8,7 @@
 #include <memory>
 #include <thread>
 #include "../client/impl/ClientImpl.h"
-#include "../generator/impl/random/MersenneTwisterNumberGenerator.h"
+#include "../generator/impl/random/MersenneTwisterNumberGeneratorFactory.h"
 #include "../container/impl/builder/VectorFactoryBuilder.h"
 
 namespace atlas::bootstrap {
@@ -16,31 +16,40 @@ namespace atlas::bootstrap {
     class Bootstrap {
         using VECTOR_FACTORY_BUILDER = atlas::container::VectorFactoryBuilder<int>;
         using VECTOR_FACTORY = std::unique_ptr<atlas::container::VectorFactory<int>>;
-        using GENERATOR = std::unique_ptr<generator::Generator<int>>;
+        using GENERATOR_BUILDER = std::unique_ptr<generator::GeneratorBuilder<int>>;
         using CLIENT = std::unique_ptr<atlas::client::Client>;
 
 
 
     public:
         auto startApplication() const->void{
-            auto generator = createGenerator();
-            auto vectorFactory = createVectorFactory(std::move(generator));
+            const size_t availableProcessors = std::thread::hardware_concurrency();
+            for(size_t threadCount = 1; threadCount <= availableProcessors + 1; ++threadCount){
+                run(threadCount);
+            }
+        }
+
+    private:
+
+        static auto run(const size_t threadcount) -> void {
+            auto generatorBuilder = createGeneratorBuilder();
+            auto vectorFactory = createVectorFactory(std::move(generatorBuilder), threadcount);
             auto client = createClient(std::move(vectorFactory));
             client->doSomethingWithLargeVector();
         }
 
-    private:
-        static GENERATOR createGenerator() {
-            GENERATOR generator = std::make_unique<atlas::generator::MersenneTwisterNumberGenerator>();
-            return generator;
+        static GENERATOR_BUILDER createGeneratorBuilder() {
+            GENERATOR_BUILDER generatorBuilder = std::make_unique<atlas::generator::MersenneTwisterNumberGeneratorFactory>();
+            return generatorBuilder;
         }
 
-        static VECTOR_FACTORY createVectorFactory(GENERATOR generator) {
-
+        static VECTOR_FACTORY createVectorFactory(GENERATOR_BUILDER generatorBuilder, size_t threadcount) {
+            VECTOR_FACTORY_BUILDER::setThreadCount(threadcount);
             VECTOR_FACTORY_BUILDER::setSecure(true);
             VECTOR_FACTORY_BUILDER::setBenchmark(true);
             VECTOR_FACTORY_BUILDER::setLogger(true);
-            VECTOR_FACTORY vectorFactory = VECTOR_FACTORY_BUILDER::createWithGenerator(std::move(generator));
+            VECTOR_FACTORY vectorFactory = VECTOR_FACTORY_BUILDER::createWithGeneratorBuilder(
+                    std::move(generatorBuilder));
             return vectorFactory;
         }
 
