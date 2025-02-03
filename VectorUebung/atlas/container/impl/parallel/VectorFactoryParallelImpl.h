@@ -29,7 +29,7 @@ namespace atlas::container {
             calculatePartitionSize();
             initializeThreadHolder();
             addWorkersToThreads();
-            joinThreads();
+            awaitThreadTermination();
         }
 
     private:
@@ -50,7 +50,7 @@ namespace atlas::container {
             }
         }
 
-        auto joinThreads() -> void
+        auto awaitThreadTermination() -> void
         {
             for (auto& thread : threadHolder_) {
                 thread.join();
